@@ -1,0 +1,11 @@
+Source: pixi-fpga
+Maintainer: Simon Cantrill <simonjcantrill@gmail.com>
+Section: misc
+Priority: optional
+Standards-Version: 3.9.2
+Build-Depends: debhelper (>= 8)
+
+Package: pixi-fpga
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: FPGA images for PiXi-200

@@ -29,3 +29,10 @@ uninstall:
 		rm -f -v $(DESTDIR)$(fpgadir)/$$target ; \
 	done
 	$(CMD)cd $(DESTDIR)$(sharedir) && rmdir --parents --ignore-fail-on-non-empty --verbose $(fpgasubdir)
+
+.PHONY: deb deb-clean
+deb:
+	debuild -us -uc
+
+deb-clean:
+	debuild clean
