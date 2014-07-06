@@ -1,3 +1,9 @@
+pixi-fpga (0.2-1) unstable; urgency=medium
+
+  * Add FPGA image for PiXi version 2
+
+ -- Simon Cantrill <simonjcantrill@gmail.com>  Sun, 06 Jul 2014 21:22:08 +0100
+
 pixi-fpga (0.1-1) unstable; urgency=low
 
   * Initial release.
