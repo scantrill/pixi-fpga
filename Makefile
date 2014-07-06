@@ -1,6 +1,7 @@
 prefix     = /usr/local
 sharedir   = $(prefix)/share
-fpgasubdir = pixi-tools/fpga
+projectdir = pixi-tools
+fpgasubdir = $(projectdir)/fpga
 fpgadir    = $(sharedir)/$(fpgasubdir)
 
 ifeq ($(V),)
@@ -18,17 +19,19 @@ all:
 
 install: $(APPS)
 	$(ECHO) installing FPGA images
-	$(CMD)mkdir -p $(DESTDIR)$(fpgadir)
-	$(CMD)cd fpga && for target in *.bin; do \
-		install -m 0644 -v $$target $(DESTDIR)$(fpgadir)/ || exit 1 ; \
+	$(CMD)cd fpga && for target in `find * -name \*.bin`; do \
+		dir=$(DESTDIR)$(fpgadir)/`dirname $$target`; \
+		mkdir -p $$dir; \
+		install -m 0644 -v $$target $$dir || exit 1 ; \
 	done
 
 uninstall:
 	$(ECHO) uninstalling FPGA images
-	$(CMD)cd fpga && for target in *.bin; do \
+	$(CMD)cd fpga && for target in `find * -name \*.bin`; do \
 		rm -f -v $(DESTDIR)$(fpgadir)/$$target ; \
 	done
-	$(CMD)cd $(DESTDIR)$(sharedir) && rmdir --parents --ignore-fail-on-non-empty --verbose $(fpgasubdir)
+	$(CMD)cd $(DESTDIR)$(sharedir) && find $(projectdir) -depth -type d -print0 | \
+		xargs -0 rmdir --ignore-fail-on-non-empty --verbose
 
 .PHONY: deb deb-clean
 deb:
