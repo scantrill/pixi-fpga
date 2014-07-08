@@ -36,7 +36,7 @@ uninstall:
 .PHONY: deb deb-clean
 deb:
 	. ./project-info && git archive -o ../$${PROJECT_NAME}_$${PROJECT_VERSION}.orig.tar.gz HEAD
-	debuild -us -uc
+	debuild
 
 deb-clean:
 	debuild clean
