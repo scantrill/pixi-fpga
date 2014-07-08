@@ -1,3 +1,9 @@
+pixi-fpga (0.2.1-1) unstable; urgency=medium
+
+  * Update PiXi version 2 FPGA to fix ADC access
+
+ -- Simon Cantrill <simonjcantrill@gmail.com>  Tue, 08 Jul 2014 19:17:58 +0100
+
 pixi-fpga (0.2-1) unstable; urgency=medium
 
   * Add FPGA image for PiXi version 2
